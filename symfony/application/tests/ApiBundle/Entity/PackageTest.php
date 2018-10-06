@@ -1,0 +1,35 @@
+<?php
+namespace Tests\ApiBundle\Entity;
+
+use ApiBundle\Entity\Package;
+use ApiBundle\Entity\Product;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+
+/**
+ * Class PackageTest
+ * @author Rafael Silveira <rsilveiracc@gmail.com>
+ * @covers \ApiBundle\Entity\Package
+ * @package ApiBundle\Tests\Entity
+ */
+class PackageTest extends WebTestCase
+{
+    /**
+     * @var Package
+     */
+    protected $package;
+
+    protected function setUp()
+    {
+        $this->package = new Package();
+    }
+
+    public function testGetterAndSetter()
+    {
+        $this->assertNull($this->package->getId());
+
+        $this->package->addProduct(new Product());
+        $this->assertEquals(new Product(), $this->package->getProducts()[0]);
+        $this->assertInstanceOf(Product::class, $this->package->getProducts()[0]);
+    }
+}

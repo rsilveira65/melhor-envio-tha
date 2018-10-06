@@ -3,6 +3,7 @@ namespace Tests\ApiBundle\Entity;
 
 use ApiBundle\Entity\Company;
 use ApiBundle\Entity\Package;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 
 /**
@@ -11,7 +12,7 @@ use ApiBundle\Entity\Package;
  * @covers \ApiBundle\Entity\Company
  * @package ApiBundle\Tests\Entity
  */
-class CompanyTest extends \PHPUnit_Framework_TestCase
+class CompanyTest extends WebTestCase
 {
     /**
      * @var Company
@@ -60,6 +61,7 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
 
         $this->company->addPackage(new Package());
         $this->assertEquals(new Package(), $this->company->getPackages()[0]);
+        $this->assertInstanceOf(Package::class, $this->company->getPackages()[0]);
 
     }
 }
