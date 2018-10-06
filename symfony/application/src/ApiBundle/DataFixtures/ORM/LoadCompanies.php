@@ -13,7 +13,6 @@ use Doctrine\Common\Persistence\ObjectManager;
  */
 class LoadCompanies extends AbstractFixture
 {
-
     /** @var array $companies  */
     private $companies = [
         [

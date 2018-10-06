@@ -2,8 +2,6 @@
 
 namespace ApiBundle\Controller;
 
-use ApiBundle\Entity\Call;
-use ApiBundle\Repository\CallRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,16 +40,5 @@ abstract class AbstractController extends Controller
             $responseContent,
             $responseCode
         );
-    }
-
-    /**
-     * @return CallRepository
-     */
-    protected function getCallRepository() : CallRepository
-    {
-       return $this
-                ->getDoctrine()
-                ->getManager()
-                ->getRepository(Call::class);
     }
 }
