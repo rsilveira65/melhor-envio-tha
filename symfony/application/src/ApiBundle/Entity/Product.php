@@ -6,55 +6,52 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Company
- *
- * @ORM\Table(name="products")
- * @ORM\Entity(repositoryClass="ApiBundle\Repository\ProductRepository")
  */
 class Product
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="quantity", type="integer")
      */
     private $quantity;
 
     /**
      * @var float
-     *
-     * @ORM\Column(name="height", type="float")
      */
     private $height;
 
     /**
      * @var float
-     *
-     * @ORM\Column(name="width", type="float")
      */
     private $width;
 
     /**
      * @var float
-     *
-     * @ORM\Column(name="length", type="float")
      */
     private $length;
 
     /**
      * @var float
-     *
-     * @ORM\Column(name="weight", type="float")
      */
     private $weight;
+
+    /**
+     * Set id
+     *
+     * @param int $id
+     *
+     * @return Product
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
 
     /**
@@ -64,6 +61,7 @@ class Product
     {
         return $this->id;
     }
+
 
     /**
      * Set height

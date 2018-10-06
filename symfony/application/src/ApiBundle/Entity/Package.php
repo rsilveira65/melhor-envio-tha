@@ -8,18 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Package
- *
- * @ORM\Table(name="packages")
- * @ORM\Entity(repositoryClass="ApiBundle\Repository\PackageRepository")
  */
 class Package
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 

@@ -2,13 +2,9 @@
 
 namespace ApiBundle\Controller;
 
-use ApiBundle\Entity\Call;
-use ApiBundle\Entity\CityCode;
-use ApiBundle\Entity\Plan;
-use ApiBundle\Service\Normalize\CallNormalizer;
-use ApiBundle\Service\Strategy\PlanRateCalculation;
-use ApiBundle\Service\Strategy\RateCalculation;
+use ApiBundle\Service\Request\ProductHandler;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,13 +20,22 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ApiController extends AbstractController
 {
     /**
-     * @Route("/calculate", name="api_calculate")
-     * @Method("GET")
+     * @param Request $request
+     * @Route("/pack", name="api_pack")
+     * @Method("POST")
+     * @return JsonResponse
      */
-    public function calculateAction() : JsonResponse
+    public function packAction(Request $request) : JsonResponse
     {
         try {
-            dump('here');die;
+            /** @var ProductHandler $productHandler */
+            $productHandler = $this->get('api.product_handler');
+
+            $products = $productHandler
+                            ->setRequest($request)
+                            ->parseProductsFromRequest();
+
+            dump($products);die;
 
         } catch (\Exception $ex) {
             return $this->createResponse($ex, Response::HTTP_INTERNAL_SERVER_ERROR);

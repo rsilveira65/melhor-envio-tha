@@ -25,7 +25,8 @@ class ProductTest extends WebTestCase
 
     public function testGetterAndSetter()
     {
-        $this->assertNull($this->product->getId());
+        $this->product->setId(2);
+        $this->assertEquals(2, $this->product->getId());
 
         $this->product->setWidth(10.2);
         $this->assertEquals(10.2, $this->product->getWidth());

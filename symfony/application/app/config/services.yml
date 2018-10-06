@@ -4,4 +4,6 @@ parameters:
 #    parameter_name: value
 
 services:
+  api.product_handler:
+      class: ApiBundle\Service\Request\ProductHandler
 
