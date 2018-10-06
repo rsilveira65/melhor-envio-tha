@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/rsilveira65/packer.svg?branch=develop)](https://travis-ci.com/rsilveira65/packer)
+
 # packer
 
 Considerando que e-commerces podem realizar a venda de uma lista de produtos que podem ser adicionados ao carrinho e que é necessário realizar o
