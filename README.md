@@ -110,7 +110,7 @@ docker exec application composer test
 ## API Route
 [Get the Postman collection](https://www.getpostman.com/collections/d4ae21f223d6ed7e62c7)
 
-### Calculate
+### PackSSS
 ```bash
 POST: http://localhost/api/pack
 
