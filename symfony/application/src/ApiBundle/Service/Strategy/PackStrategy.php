@@ -10,9 +10,13 @@ namespace ApiBundle\Service\Strategy;
 
 use ApiBundle\Entity\Company;
 use ApiBundle\Entity\Product;
-use ApiBundle\Service\Factory\PackageFactoryInterface;
 
-class PackStrategy implements PackageFactoryInterface
+/**
+ * Class PackStrategy
+ * @author Rafael Silveira <rsilveiracc@gmail.com>
+ * @package ApiBundle\Service\Strategy
+ */
+class PackStrategy implements PackStrategyInterface
 {
     /** @var Company $company */
     private $company;

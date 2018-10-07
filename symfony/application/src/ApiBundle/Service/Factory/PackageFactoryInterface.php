@@ -9,7 +9,15 @@
 namespace ApiBundle\Service\Factory;
 
 
+use ApiBundle\Service\Strategy\PackStrategy;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * interface PackageFactoryInterface
+ * @author Rafael Silveira <rsilveiracc@gmail.com>
+ * @package ApiBundle\Service\Factory
+ */
 interface PackageFactoryInterface
 {
-
+    static function create(ArrayCollection $products, PackStrategy $packStrategy);
 }

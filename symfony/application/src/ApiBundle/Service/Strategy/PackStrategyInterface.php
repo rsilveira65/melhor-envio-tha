@@ -7,7 +7,17 @@
  */
 namespace ApiBundle\Service\Strategy;
 
+use ApiBundle\Entity\Product;
+
+/**
+ * interface PackStrategyInterface
+ * @author Rafael Silveira <rsilveiracc@gmail.com>
+ * @package ApiBundle\Service\Strategy
+ */
 interface PackStrategyInterface
 {
+    public function hasValidSizes(Product $product);
+
+    public function getCompanyVolume();
 
 }

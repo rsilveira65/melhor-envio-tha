@@ -1,7 +1,6 @@
 <?php
 namespace ApiBundle\Service\Normalize;
 
-use ApiBundle\Entity\Company;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;

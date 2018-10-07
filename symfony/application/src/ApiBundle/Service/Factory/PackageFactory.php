@@ -13,6 +13,11 @@ use ApiBundle\Entity\Product;
 use ApiBundle\Service\Strategy\PackStrategy;
 use Doctrine\Common\Collections\ArrayCollection;
 
+/**
+ * Class PackageFactory
+ * @author Rafael Silveira <rsilveiracc@gmail.com>
+ * @package ApiBundle\Service\Factory
+ */
 class PackageFactory implements PackageFactoryInterface
 {
     /**

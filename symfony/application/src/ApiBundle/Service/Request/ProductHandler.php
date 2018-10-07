@@ -6,7 +6,11 @@ use ApiBundle\Entity\Product;
 use Doctrine\Common\Collections\ArrayCollection;
 use \Symfony\Component\HttpFoundation\Request;
 
-
+/**
+ * interface ProductHandler
+ * @author Rafael Silveira <rsilveiracc@gmail.com>
+ * @package ApiBundle\Service\Request
+ */
 class ProductHandler
 {
     /** @var Request $request */
