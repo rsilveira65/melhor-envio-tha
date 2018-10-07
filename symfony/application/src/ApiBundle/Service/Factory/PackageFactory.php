@@ -38,15 +38,16 @@ class PackageFactory implements PackageFactoryInterface
         $package = new Package();
 
         do {
-            if ($package->getVolume() > $maxCompanyVolume) {
-                $packages->add($package);
-
-                $package = new Package();
-                $package->setId($package->getId() + 1);
-            }
 
             /** @var Product $product */
             $product = $products[$productIndex];
+
+            //there's no more enough space in the package, creates a new fresh one.
+            if ($package->getVolume() + $product->getVolume() > $maxCompanyVolume) {
+                $packages->add($package);
+
+                $package = new Package();
+            }
 
             if (!$packStrategy->hasValidSizes($product)) {
                 unset($products[$productIndex]);
@@ -64,7 +65,6 @@ class PackageFactory implements PackageFactoryInterface
 
             if (empty($products)) {
                 $packages->add($package);
-                $package->setId($package->getId() + 1);
                 break;
             }
 

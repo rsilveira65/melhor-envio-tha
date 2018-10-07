@@ -157,12 +157,12 @@ POST: http://localhost/api/pack
         "maxLength": 105,
         "minWeight": 0,
         "maxWeight": 30,
-        "amountOfPackages": 2,
+        "amountOfPackages": 3,
         "volume": 1157625,
         "packages": [
             {
-                "amountOfProducts": 8,
-                "volume": 1275000,
+                "amountOfProducts": 7,
+                "volume": 1125000,
                 "products": [
                     {
                         "id": 3,
@@ -206,14 +206,6 @@ POST: http://localhost/api/pack
                     },
                     {
                         "id": 2,
-                        "height": 50,
-                        "width": 60,
-                        "length": 50,
-                        "weight": 30,
-                        "volume": 150000
-                    },
-                    {
-                        "id": 1,
                         "height": 50,
                         "width": 60,
                         "length": 50,
@@ -291,6 +283,20 @@ POST: http://localhost/api/pack
                         "volume": 150000
                     }
                 ]
+            },
+            {
+                "amountOfProducts": 1,
+                "volume": 150000,
+                "products": [
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    }
+                ]
             }
         ]
     },
@@ -309,8 +315,8 @@ POST: http://localhost/api/pack
         "volume": 1900500,
         "packages": [
             {
-                "amountOfProducts": 13,
-                "volume": 2025000,
+                "amountOfProducts": 12,
+                "volume": 1875000,
                 "products": [
                     {
                         "id": 3,
@@ -354,14 +360,6 @@ POST: http://localhost/api/pack
                     },
                     {
                         "id": 2,
-                        "height": 50,
-                        "width": 60,
-                        "length": 50,
-                        "weight": 30,
-                        "volume": 150000
-                    },
-                    {
-                        "id": 1,
                         "height": 50,
                         "width": 60,
                         "length": 50,
@@ -419,9 +417,17 @@ POST: http://localhost/api/pack
                 ]
             },
             {
-                "amountOfProducts": 2,
-                "volume": 300000,
+                "amountOfProducts": 3,
+                "volume": 450000,
                 "products": [
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
                     {
                         "id": 1,
                         "height": 50,
