@@ -37,7 +37,7 @@ class PackStrategyTest extends WebTestCase
     }
 
     /**
-     * @covers \ApiBundle\Service\Strategy\PackStrategy::setCompany()
+     * @covers \ApiBundle\Service\Strategy\PackStrategy::setCompany
      * @return Company $company
      */
     public function testSetCompany()
