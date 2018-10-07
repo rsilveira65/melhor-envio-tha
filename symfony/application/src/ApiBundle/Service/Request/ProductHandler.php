@@ -5,12 +5,7 @@ namespace ApiBundle\Service\Request;
 use ApiBundle\Entity\Product;
 use Doctrine\Common\Collections\ArrayCollection;
 use \Symfony\Component\HttpFoundation\Request;
-/**
- * Created by PhpStorm.
- * User: rafael
- * Date: 06/10/18
- * Time: 14:44
- */
+
 
 class ProductHandler
 {
@@ -21,7 +16,7 @@ class ProductHandler
      * @param Request $request
      * @return $this
      */
-    public function setRequest(Request $request)
+    public function setRequest(Request $request) : ProductHandler
     {
         $this->request = $request;
 
@@ -39,17 +34,21 @@ class ProductHandler
         $productsCollection = new ArrayCollection();
 
         foreach ($projectsArray as $productItem) {
-            /** @var Product $product */
-            $product = new Product();
+            for ($i = 1; $i <= $productItem['quantity']; $i++) {
+                /** @var Product $product */
+                $product = new Product();
 
-            foreach ($productItem as $key => $item) {
-                $method = sprintf('set%s', ucfirst($key));
-                if (!method_exists($product, $method)) throw new \Exception(sprintf('Invalid parameter %s.', $key));
+                foreach ($productItem as $key => $item) {
+                    $method = sprintf('set%s', ucfirst($key));
+                    if (!method_exists($product, $method)) throw new \Exception(sprintf('Invalid parameter %s.', $key));
 
-                $product->{$method}($item);
+                    $product->{$method}($item);
+                    $product->setVolume();
+                }
+
+                $productsCollection->add($product);
             }
 
-            $productsCollection->add($product);
         }
 
         return $productsCollection;

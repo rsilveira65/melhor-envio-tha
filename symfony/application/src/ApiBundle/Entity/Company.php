@@ -11,6 +11,8 @@ namespace ApiBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Ldap\Adapter\ExtLdap\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * Company
@@ -21,6 +23,7 @@ use Symfony\Component\Ldap\Adapter\ExtLdap\Collection;
 class Company
 {
     /**
+     * @Groups({"ApiResponse"})
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -30,11 +33,7 @@ class Company
     private $id;
 
     /**
-     * @var Collection
-     */
-    private $packages;
-
-    /**
+     * @Groups({"ApiResponse"})
      * @var string
      *
      * @ORM\Column(name="name", type="string")
@@ -42,6 +41,7 @@ class Company
     private $name;
 
     /**
+     * @Groups({"ApiResponse"})
      * @var float
      *
      * @ORM\Column(name="min_height", type="float")
@@ -49,6 +49,7 @@ class Company
     private $minHeight;
 
     /**
+     * @Groups({"ApiResponse"})
      * @var float
      *
      * @ORM\Column(name="max_height", type="float")
@@ -56,6 +57,7 @@ class Company
     private $maxHeight;
 
     /**
+     * @Groups({"ApiResponse"})
      * @var float
      *
      * @ORM\Column(name="min_width", type="float")
@@ -63,6 +65,7 @@ class Company
     private $minWidth;
 
     /**
+     * @Groups({"ApiResponse"})
      * @var float
      *
      * @ORM\Column(name="max_width", type="float")
@@ -70,6 +73,7 @@ class Company
     private $maxWidth;
 
     /**
+     * @Groups({"ApiResponse"})
      * @var float
      *
      * @ORM\Column(name="min_length", type="float")
@@ -77,6 +81,7 @@ class Company
     private $minLength;
 
     /**
+     * @Groups({"ApiResponse"})
      * @var float
      *
      * @ORM\Column(name="max_length", type="float")
@@ -84,6 +89,7 @@ class Company
     private $maxLength;
 
     /**
+     * @Groups({"ApiResponse"})
      * @var float
      *
      * @ORM\Column(name="min_weight", type="float")
@@ -91,11 +97,32 @@ class Company
     private $minWeight;
 
     /**
+     * @Groups({"ApiResponse"})
      * @var float
      *
      * @ORM\Column(name="max_weight", type="float")
      */
     private $maxWeight;
+
+    /**
+     * @Groups({"ApiResponse"})
+     * @var int
+     */
+    private $amountOfPackages;
+
+    /**
+     * @Groups({"ApiResponse"})
+     * @ORM\Column(name="volume", type="float")
+     * @var float
+     */
+    private $volume;
+
+
+    /**
+     * @Groups({"ApiResponse"})
+     * @var Collection
+     */
+    private $packages;
 
     /**
      * Company constructor.
@@ -104,7 +131,6 @@ class Company
     {
         $this->packages = new ArrayCollection();
     }
-
 
 
     /**
@@ -331,6 +357,33 @@ class Company
         return $this->maxWeight;
     }
 
+
+    /**
+     * @return $this
+     */
+    public function setVolume()
+    {
+        $this->volume = $this->getMaxHeight() * $this->getMaxLength() * $this->getMaxWidth();
+
+        return $this;
+    }
+
+    /**
+     * @return float|int
+     */
+    public function getVolume()
+    {
+        return $this->volume;
+    }
+
+    /**
+     * @return float|int
+     */
+    public function getAmountOfPackages()
+    {
+        return $this->packages->count();
+    }
+
     /**
      * @param Package $package
      * @return Company
@@ -343,12 +396,24 @@ class Company
     }
 
     /**
+     * @param ArrayCollection $packages
+     * @return Company
+     */
+    public function addPackages(ArrayCollection $packages)
+    {
+        $this->packages = $packages;
+
+        return $this;
+    }
+
+    /**
      * @return Collection
      */
     public function getPackages()
     {
         return $this->packages;
     }
+
 
 }
 

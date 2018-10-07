@@ -3,6 +3,8 @@
 namespace ApiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * Company
@@ -10,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Product
 {
     /**
+     * @Groups({"ApiResponse"})
      * @var int
      */
     private $id;
@@ -20,24 +23,34 @@ class Product
     private $quantity;
 
     /**
+     * @Groups({"ApiResponse"})
      * @var float
      */
     private $height;
 
     /**
+     * @Groups({"ApiResponse"})
      * @var float
      */
     private $width;
 
     /**
+     * @Groups({"ApiResponse"})
      * @var float
      */
     private $length;
 
     /**
+     * @Groups({"ApiResponse"})
      * @var float
      */
     private $weight;
+
+    /**
+     * @Groups({"ApiResponse"})
+     * @var float
+     */
+    private $volume;
 
     /**
      * Set id
@@ -176,11 +189,28 @@ class Product
     /**
      * Get quantity
      *
-     * @return float
+     * @return int
      */
     public function getQuantity()
     {
         return $this->quantity;
     }
+
+    /**
+     * @return float|int
+     */
+    public function setVolume()
+    {
+        return $this->volume = $this->getHeight() * $this->getLength() * $this->getWidth();
+    }
+
+    /**
+     * @return float|int
+     */
+    public function getVolume()
+    {
+        return $this->volume;
+    }
+
 }
 

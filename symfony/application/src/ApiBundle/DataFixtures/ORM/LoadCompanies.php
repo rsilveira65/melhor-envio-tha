@@ -61,6 +61,7 @@ class LoadCompanies extends AbstractFixture
                 $method = sprintf('set%s', $key);
 
                 $companyEntity->{$method}($companyData);
+                $companyEntity->setVolume();
             }
 
             $manager->persist($companyEntity);

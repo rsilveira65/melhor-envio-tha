@@ -2,6 +2,7 @@
 
 namespace ApiBundle\Controller;
 
+use ApiBundle\Entity\Company;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,5 +41,13 @@ abstract class AbstractController extends Controller
             $responseContent,
             $responseCode
         );
+    }
+
+    /**
+     * @return array
+     */
+    protected function getCompanies()
+    {
+        return $this->getDoctrine()->getManager()->getRepository(Company::class)->findAll();
     }
 }

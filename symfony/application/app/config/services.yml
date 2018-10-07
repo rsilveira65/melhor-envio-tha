@@ -6,4 +6,12 @@ parameters:
 services:
   api.product_handler:
       class: ApiBundle\Service\Request\ProductHandler
+  api.package_factory:
+      class: ApiBundle\Service\Factory\PackageFactory
+  api.pack_strategy:
+      class: ApiBundle\Service\Strategy\PackStrategy
+  api.pack_strategy:
+      class: ApiBundle\Service\Strategy\PackStrategy
+  api.company_normalizer:
+      class: ApiBundle\Service\Normalize\CompanyNormalizer
 
