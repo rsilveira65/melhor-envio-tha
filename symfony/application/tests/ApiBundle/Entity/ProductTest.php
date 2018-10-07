@@ -40,8 +40,10 @@ class ProductTest extends WebTestCase
         $this->product->setWeight(9.3);
         $this->assertEquals(9.3, $this->product->getWeight());
 
-
         $this->product->setQuantity(15);
         $this->assertEquals(15, $this->product->getQuantity());
+
+        $this->product->setVolume();
+        $this->assertEquals(35.19, $this->product->getVolume());
     }
 }

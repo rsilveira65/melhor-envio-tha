@@ -38,7 +38,7 @@ class PackageFactory implements PackageFactoryInterface
         $package = new Package();
 
         do {
-            if ($package->getVolume() >= $maxCompanyVolume) {
+            if ($package->getVolume() > $maxCompanyVolume) {
                 $packages->add($package);
 
                 $package = new Package();
@@ -58,7 +58,6 @@ class PackageFactory implements PackageFactoryInterface
                 ->addProduct($product)
                 ->setVolume($package->getVolume() + $product->getVolume())
                 ->setAmountOfProducts($package->getAmountOfProducts() + 1);
-
 
             unset($products[$productIndex]);
             $productIndex--;

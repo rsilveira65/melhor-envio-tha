@@ -1,0 +1,4 @@
+<?php return array (
+  0 => 9223372036854775807,
+  1 => 'a:1:{i:0;O:46:"Symfony\\Component\\Serializer\\Annotation\\Groups":1:{s:54:"' . "\0" . 'Symfony\\Component\\Serializer\\Annotation\\Groups' . "\0" . 'groups";a:1:{i:0;s:11:"ApiResponse";}}}',
+);

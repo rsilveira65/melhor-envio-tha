@@ -3,6 +3,7 @@ namespace Tests\ApiBundle\Entity;
 
 use ApiBundle\Entity\Company;
 use ApiBundle\Entity\Package;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 
@@ -58,10 +59,18 @@ class CompanyTest extends WebTestCase
         $this->company->setMaxWeight(302.2);
         $this->assertEquals(302.2, $this->company->getMaxWeight());
 
+        $this->company->setVolume();
+        $this->assertEquals(666334.0079999999, $this->company->getVolume());
 
         $this->company->addPackage(new Package());
         $this->assertEquals(new Package(), $this->company->getPackages()[0]);
         $this->assertInstanceOf(Package::class, $this->company->getPackages()[0]);
 
+        $this->assertEquals(1, $this->company->getAmountOfPackages());
+
+        $packages =  new ArrayCollection([new Package(), new Package()]);
+
+        $this->company->addPackages($packages);
+        $this->assertEquals(new Package(),$this->company->getPackages()[0]);
     }
 }

@@ -43,8 +43,8 @@ class ApiController extends AbstractController
             $companyNormalizer  = $this->get('api.company_normalizer');
 
             $products = $productHandler
-                            ->setRequest($request)
-                            ->parseProductsFromRequest();
+                ->setRequest($request)
+                ->parseProductsFromRequest();
 
             $companies = $this->getCompanies();
 
