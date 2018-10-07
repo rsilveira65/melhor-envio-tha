@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/rsilveira65/packer.svg?branch=develop)](https://travis-ci.com/rsilveira65/packer)
+[![Build Status](https://img.shields.io/badge/coverage-75%25-green.svg)](coverage)
 
 # packer
 

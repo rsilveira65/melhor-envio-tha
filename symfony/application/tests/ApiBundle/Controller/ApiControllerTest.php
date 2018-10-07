@@ -54,7 +54,7 @@ class ApiControllerTest extends WebTestCase
                 ]
             )
         );
-        
+
         $this->assertEquals(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
 
         $data = json_decode($this->client->getResponse()->getContent(), true);
@@ -71,6 +71,5 @@ class ApiControllerTest extends WebTestCase
         $this->assertArrayHasKey('maxWeight', $data[0]);
         $this->assertArrayHasKey('amountOfPackages', $data[0]);
         $this->assertArrayHasKey('volume', $data[0]);
-
     }
 }
