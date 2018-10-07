@@ -13,7 +13,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class Package
 {
     /**
-     * @Groups({"ApiResponse"})
      * @var int
      */
     private $id;

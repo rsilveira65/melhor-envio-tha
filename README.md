@@ -55,3 +55,534 @@ número de volumes (caixas) possível.
 | ALTURA (A) | 1 cm | 200 cm | 
 | LARGURA (L) | 1 cm | 200 cm | 
 | COMPRIMENTO (C) | 1 cm | 240 cm | 
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+Just make sure you have [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/) properly installed.
+
+```sh
+docker --version
+docker-compose --version
+```
+
+### Installing
+
+```sh
+cp symfony/application/app/config/parameters.yml.dist symfony/application/app/config/parameters.yml
+```
+
+```sh
+cp .env.dist .env
+```
+
+```sh
+docker-compose up -d
+```
+
+Create the database schema.
+
+```sh
+docker exec application bin/console doctrine:schema:update --force
+```
+
+Populate the database.
+
+```sh
+docker exec application bin/console doctrine:fixture:load -n
+```
+
+Clear cache
+
+```sh
+docker exec application bin/console doctrine:cache:clear --env=prod
+```
+
+## Unit Tests
+Get unit test summary on executing
+
+```sh
+docker exec application composer test
+```
+
+## API Route
+[Get the Postman collection](https://www.getpostman.com/collections/d4ae21f223d6ed7e62c7)
+
+### Calculate
+```bash
+POST: http://localhost/api/pack
+
+[
+	{
+		"id": 1,
+		"quantity": 9,
+		"weight": 30,
+		"height": 50,
+		"width": 60,
+		"length": 50
+	},
+	{
+		"id": 2,
+		"quantity": 3,
+		"weight": 30,
+		"height": 50,
+		"width": 60,
+		"length": 50
+	},
+	{
+		"id": 3,
+		"quantity": 3,
+		"weight": 30,
+		"height": 50,
+		"width": 70,
+		"length": 50
+	}
+]
+
+```
+
+##### Response:
+```bash
+[
+    {
+        "id": 10,
+        "name": "Correios",
+        "minHeight": 2,
+        "maxHeight": 105,
+        "minWidth": 11,
+        "maxWidth": 105,
+        "minLength": 16,
+        "maxLength": 105,
+        "minWeight": 0,
+        "maxWeight": 30,
+        "amountOfPackages": 2,
+        "volume": 1157625,
+        "packages": [
+            {
+                "amountOfProducts": 8,
+                "volume": 1275000,
+                "products": [
+                    {
+                        "id": 3,
+                        "height": 50,
+                        "width": 70,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 175000
+                    },
+                    {
+                        "id": 3,
+                        "height": 50,
+                        "width": 70,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 175000
+                    },
+                    {
+                        "id": 3,
+                        "height": 50,
+                        "width": 70,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 175000
+                    },
+                    {
+                        "id": 2,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 2,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 2,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    }
+                ]
+            },
+            {
+                "amountOfProducts": 7,
+                "volume": 1050000,
+                "products": [
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Jadlog",
+        "minHeight": 1,
+        "maxHeight": 100,
+        "minWidth": 1,
+        "maxWidth": 105,
+        "minLength": 1,
+        "maxLength": 181,
+        "minWeight": 0,
+        "maxWeight": 150,
+        "amountOfPackages": 2,
+        "volume": 1900500,
+        "packages": [
+            {
+                "amountOfProducts": 13,
+                "volume": 2025000,
+                "products": [
+                    {
+                        "id": 3,
+                        "height": 50,
+                        "width": 70,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 175000
+                    },
+                    {
+                        "id": 3,
+                        "height": 50,
+                        "width": 70,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 175000
+                    },
+                    {
+                        "id": 3,
+                        "height": 50,
+                        "width": 70,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 175000
+                    },
+                    {
+                        "id": 2,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 2,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 2,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    }
+                ]
+            },
+            {
+                "amountOfProducts": 2,
+                "volume": 300000,
+                "products": [
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Via Brasil",
+        "minHeight": 1,
+        "maxHeight": 200,
+        "minWidth": 1,
+        "maxWidth": 200,
+        "minLength": 1,
+        "maxLength": 240,
+        "minWeight": 0,
+        "maxWeight": 200,
+        "amountOfPackages": 1,
+        "volume": 9600000,
+        "packages": [
+            {
+                "amountOfProducts": 15,
+                "volume": 2325000,
+                "products": [
+                    {
+                        "id": 3,
+                        "height": 50,
+                        "width": 70,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 175000
+                    },
+                    {
+                        "id": 3,
+                        "height": 50,
+                        "width": 70,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 175000
+                    },
+                    {
+                        "id": 3,
+                        "height": 50,
+                        "width": 70,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 175000
+                    },
+                    {
+                        "id": 2,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 2,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 2,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    },
+                    {
+                        "id": 1,
+                        "height": 50,
+                        "width": 60,
+                        "length": 50,
+                        "weight": 30,
+                        "volume": 150000
+                    }
+                ]
+            }
+        ]
+    }
+]
+```
