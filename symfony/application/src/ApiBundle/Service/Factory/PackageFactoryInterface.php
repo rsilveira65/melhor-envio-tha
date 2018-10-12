@@ -9,7 +9,7 @@
 namespace ApiBundle\Service\Factory;
 
 
-use ApiBundle\Service\Strategy\PackStrategy;
+use ApiBundle\Service\Strategy\PackStrategyInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -19,5 +19,5 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 interface PackageFactoryInterface
 {
-    static function create(ArrayCollection $products, PackStrategy $packStrategy);
+    static function create(ArrayCollection $products, PackStrategyInterface $packStrategy);
 }

@@ -37,10 +37,10 @@ class ApiController extends AbstractController
             $productHandler = $this->get('api.product_handler');
 
             /** @var PackStrategy $packStrategy */
-            $packStrategy  = $this->get('api.pack_strategy');
+            $packStrategy = $this->get('api.pack_strategy');
 
             /** @var CompanyNormalizer $companyNormalizer */
-            $companyNormalizer  = $this->get('api.company_normalizer');
+            $companyNormalizer = $this->get('api.company_normalizer');
 
             $products = $productHandler
                 ->setRequest($request)
