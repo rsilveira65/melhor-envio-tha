@@ -10,7 +10,7 @@ namespace ApiBundle\Service\Factory;
 
 use ApiBundle\Entity\Package;
 use ApiBundle\Entity\Product;
-use ApiBundle\Service\Strategy\PackStrategy;
+use ApiBundle\Service\Strategy\PackStrategyInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -22,11 +22,11 @@ class PackageFactory implements PackageFactoryInterface
 {
     /**
      * @param ArrayCollection $products
-     * @param PackStrategy $packStrategy
+     * @param PackStrategyInterface $packStrategy
      * @return ArrayCollection
      * @throws \Exception
      */
-    static function create(ArrayCollection $products, PackStrategy $packStrategy)
+    static function create(ArrayCollection $products, PackStrategyInterface $packStrategy)
     {
         $packages = new ArrayCollection();
         $maxCompanyVolume = $packStrategy->getCompanyVolume();
